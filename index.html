@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes no SpedFiscal</title>
+
+    <link rel="stylesheet" href="default/css/layout.css" />
+    <link rel="stylesheet" href="default/css/title.css" />
+    <link rel="stylesheet" href="default/css/menu.css" />
+    <link rel="stylesheet" href="default/css/button.css" />
+    <link rel="stylesheet" href="default/css/cores.css" />
+    <link rel="modulepreload" href="./index.mjs" />
+    <script type="text/javascript" src="default/javascript/menu.js"></script>
+    <script type="text/javascript" src="./extrair-estoque.js"></script>
+</head>
+<body>
+
+    <header class="layout_header">
+        <div class="title"> <h1>Ajustes do sped fiscal</h1> </div>
+
+        <nav>
+    
+            <div class="menu" id="myNavbar">
+                <ul>
+                    <li> 
+                        <a href="#" onclick="mostrarOpcoesMenu()" class="dropoption main-option">Correções</a> 
+                        <div id="idDropdownMenu" class="dropdown-content">
+                            <a href="/#ExtrairEstoque">Extrair Estoque</a>
+                            <a href="/#CorrigirCfop">Corrigir CFOP</a>
+                            <a href="/##Opcao3">Opção 3</a>
+                        </div>
+                    </li>
+                    <li> <a href="/#ConfiguracoesEmail" class="main-option">Configurações de Email</a> </li>
+                    <li> <a href="/#EnvioEmail" class="main-option">Enviar Arquivo por Email</a> </li>
+                    <li> <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <main id="main" class="layout_main">
+                
+    </main>
+
+    <footer>
+        <div class="layout_rodape">
+            <h4>Copy @Daniel Akka</h4>
+        </div>
+    </footer>
+
+    <script type="module" src="./index.mjs" ></script>
+</body>
+</html>

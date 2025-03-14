@@ -1,0 +1,44 @@
+@import url("root.css");
+
+.layout_header {
+    position: fixed;
+    /*Tamnanho e margem*/
+    top: 0%;
+    left: var(--left);
+    right: var(--right);
+    width: 99.3%;
+
+    /*Borda*/
+    border: 2px solid;
+    border-color: var(--main-background-color-menu);
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px #484848;
+}
+
+.layout_main {
+    position: static;
+    margin-top: 120px;
+    margin-bottom: 80px;
+}
+
+.layout_rodape {
+    position: fixed;
+    bottom: 0%;
+    left: var(--left);
+    right: var(--right);
+    text-align: center;
+    border-style: solid;
+    background-color: #484848;
+    color: #f2f2f2;
+    height: 3em;
+}
+
+.display_block {
+    display: block;
+}
+
+@media screen and (max-width: 800px){
+    .layout_header {
+        width: 98.9%;
+    }
+}

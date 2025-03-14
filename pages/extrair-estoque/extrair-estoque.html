@@ -1,0 +1,15 @@
+<h2>Extrair Estoque</h2>
+
+<div>
+    <h3>Selecione um arquivo SPED FISCAL</h3>
+    <label for="fileSped">Selecione o arquivo:</label>
+    <input type="file" id="fileSped" name="fileSped" accept=".txt" onChange="lerArquivoSpedFiscal(this.files)"><br><br>
+    <button class="default-button" onclick="extrairIventarioSpedFiscal()">Extrair o Inventário</button>
+</div>
+
+<div>
+    <textarea name="conteudo-arquivo" id="conteudo" placeholder="conteudo">
+
+    </textarea>
+</div>
+

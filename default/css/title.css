@@ -1,0 +1,11 @@
+.title {
+    background-color: lemonchiffon;
+    margin: 0;
+}
+
+.title h1 {
+    margin: 0 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+}
