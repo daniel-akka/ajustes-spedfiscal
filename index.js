@@ -13,11 +13,9 @@ const init = () => {
             main.appendChild(home());
             break;
             case "#ConfiguracoesEmail":
-                console.log('Page config');
                 main.appendChild(configEmail());
                 break;
             case "#ExtrairEstoque":
-                console.log('Page config');
                 main.appendChild(extrairEstoque());
                 break;
             default:
