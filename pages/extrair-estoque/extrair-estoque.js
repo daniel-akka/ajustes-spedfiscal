@@ -82,7 +82,7 @@ function extrairIventarioSpedFiscal(){
         
     });
     
-    downloadInventarioSpedFiscal('INVENTARIO EXTRAIDO DO SPEDFISCAL.txt', novo_conteudo_do_arquivo);
+    downloadInventarioSpedFiscal('INVENTARIO - ' + filename, novo_conteudo_do_arquivo);
 }
 
 function finalBloco(linha, quantidade){

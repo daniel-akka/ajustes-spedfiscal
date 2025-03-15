@@ -1,5 +1,6 @@
 var conteudo_original_do_arquivo = "";
 var array_inventario_csv = [];
+var filename = "";
 
 function lerArquivoSpedFiscal(files){
 
@@ -8,6 +9,7 @@ function lerArquivoSpedFiscal(files){
         conteudo_original_do_arquivo = this.result;
      };
      reader.readAsText(files[0], "iso-8859-1");
+     filename = files[0].name;
 }
 
 function gerarConteudoCsv(){
@@ -64,7 +66,9 @@ function gerarConteudoCsv(){
 
 function extrairInventarioCsv(){
     gerarConteudoCsv();
-    downloadInventarioCSV('CSV - INVENTARIO EXTRAIDO DO SPEDFISCAL.csv', array_inventario_csv);
+    var novo_nome = filename.toUpperCase();
+    novo_nome = novo_nome.replaceAll(".TXT", "");
+    downloadInventarioCSV('CSV INVENTARIO - ' + novo_nome + ".csv", array_inventario_csv);
 }
 
 
