@@ -64,11 +64,11 @@ function gerarConteudoCsv(){
 
 function extrairInventarioCsv(){
     gerarConteudoCsv();
-    download('CSV - INVENTARIO EXTRAIDO DO SPEDFISCAL.csv', array_inventario_csv);
+    downloadInventarioCSV('CSV - INVENTARIO EXTRAIDO DO SPEDFISCAL.csv', array_inventario_csv);
 }
 
 
-function download(filename, rows_file) {
+function downloadInventarioCSV(filename, rows_file) {
 
     let csvContent = "data:text/csv;charset=iso-8859-1," 
     + rows_file.map(e => e.join(";")).join("\n");

@@ -21,7 +21,7 @@ function lerArquivoSpedFiscal(files){
      reader.readAsText(files[0], "iso-8859-1");
 }
 
-function gerarConteudoCsv(){
+function extrairIventarioSpedFiscal(){
     
     var cont_linhas = 0;
     var cont_bloco = 0;
@@ -82,7 +82,7 @@ function gerarConteudoCsv(){
         
     });
     
-    download('INVENTARIO EXTRAIDO DO SPEDFISCAL.txt', novo_conteudo_do_arquivo);
+    downloadInventarioSpedFiscal('INVENTARIO EXTRAIDO DO SPEDFISCAL.txt', novo_conteudo_do_arquivo);
 }
 
 function finalBloco(linha, quantidade){
@@ -102,7 +102,7 @@ function finalBloco(linha, quantidade){
     return str_linha;
 }
 
-function download(filename, text) {
+function downloadInventarioSpedFiscal(filename, text) {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;iso-8859-1,' + encodeURIComponent(text));
     element.setAttribute('download', filename);

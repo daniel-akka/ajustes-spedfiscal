@@ -7,6 +7,9 @@ export default () => {
 <div>
     <h3>Selecione um arquivo SPED FISCAL</h3>
     <h4 class="font-alerta">Certifique-se de ter <mark>validado o arquivo SpedFiscal antes!</mark></h4>
+    <p>
+        <h4><i>Para o arquivo CSV não é necessário a pré-validação.</i></h4>
+    </p>
     <label for="fileSped">Selecione o arquivo:</label>
     <input type="file" id="fileSped" name="fileSped" accept=".txt" onChange="lerArquivoSpedFiscal(this.files)"><br><br>
     <div class="button-inline-block">
