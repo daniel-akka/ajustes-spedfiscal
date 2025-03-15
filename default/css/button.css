@@ -10,3 +10,16 @@
     font-size: 12px;
     cursor: pointer;
 }
+
+.default-button-green {
+    background-color: #00804b; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+}

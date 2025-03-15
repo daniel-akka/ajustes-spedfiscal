@@ -9,7 +9,10 @@ export default () => {
     <h4 class="font-alerta">Certifique-se de ter <mark>validado o arquivo SpedFiscal antes!</mark></h4>
     <label for="fileSped">Selecione o arquivo:</label>
     <input type="file" id="fileSped" name="fileSped" accept=".txt" onChange="lerArquivoSpedFiscal(this.files)"><br><br>
-    <button class="default-button" onclick="extrairIventarioSpedFiscal()">Extrair o Inventário</button>
+    <div class="button-inline-block">
+        <button class="default-button button-inline-block" onclick="extrairIventarioSpedFiscal()">Extrair no Formato SPEDFISCAL</button>
+        <button class="default-button-green button-inline-block" onclick="extrairInventarioCsv()">Extrair no Formator CSV  <i class="fa fa-file"></i></button>
+    </div>
 </div>
 
     `;

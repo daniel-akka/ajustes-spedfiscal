@@ -21,7 +21,7 @@ function lerArquivoSpedFiscal(files){
      reader.readAsText(files[0], "iso-8859-1");
 }
 
-function extrairIventarioSpedFiscal(){
+function gerarConteudoCsv(){
     
     var cont_linhas = 0;
     var cont_bloco = 0;

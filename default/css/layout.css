@@ -37,8 +37,21 @@
     display: block;
 }
 
+.button-inline-block {
+    display: inline-block;
+}
+
 @media screen and (max-width: 800px){
     .layout_header {
         width: 98.9%;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    
+    .button-inline-block {
+        display: grid;
+        margin-bottom: 4px;
     }
 }
