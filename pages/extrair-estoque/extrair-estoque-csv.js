@@ -59,8 +59,6 @@ function gerarConteudoCsv(){
         }      
         
     });
-
-    console.log(array_inventario_csv);
     
 }
 
