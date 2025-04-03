@@ -1,6 +1,7 @@
-import configEmail from "./pages/config-email/config-email.mjs";
-import extrairEstoque from "./pages/extrair-estoque/page-extrair-estoque.mjs";
 import home from "./pages/home/home.mjs";
+import configEmail from "./pages/config-email/config-email.mjs";
+import pageExtrairEstoque from "./pages/extrair-estoque/page-extrair-estoque.mjs";
+import pageCorrigirEstoque from "./pages/corrigir-estoque/page-corrigir-estoque.mjs"
 
 const main = document.getElementById("main");
 
@@ -16,7 +17,10 @@ const init = () => {
                 main.appendChild(configEmail());
                 break;
             case "#ExtrairEstoque":
-                main.appendChild(extrairEstoque());
+                main.appendChild(pageExtrairEstoque());
+                break;
+            case "#CorrigirEstoque":
+                main.appendChild(pageCorrigirEstoque());
                 break;
             default:
                 main.appendChild(home());

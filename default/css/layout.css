@@ -37,21 +37,51 @@
     display: block;
 }
 
-.button-inline-block {
+.button-inline-block{
     display: inline-block;
 }
 
-@media screen and (max-width: 800px){
-    .layout_header {
-        width: 98.9%;
-    }
-    
+.box-alteracoes {
+    padding: 10px 10px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    border: 1px solid #b6b6b6;
 }
 
-@media screen and (max-width: 600px) {
-    
-    .button-inline-block {
-        display: grid;
-        margin-bottom: 4px;
-    }
+.box-alteracoes select {
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
+
+.opcoes-alteracao {
+    background-color: beige;
+    font-weight: bold;
+    font-size: medium;
+}
+.box-alteracoes input[type=text] {
+    font-size: medium;
+}
+.box-alteracoes input[type=text]:focus {
+        border: 1px solid #555;
+}
+
+.value {
+    text-align: right;
+}
+
+.operacao {
+    font-weight: bold;
+    font-size: large;
+    background-color: #f2f2f2;
+}
+
+.box-alteracoes label {
+    margin-top: 10px;
+    margin-bottom: 2px;
+    margin-left: 0;
+}
+
+

@@ -1,0 +1,30 @@
+@media screen and (max-width: 800px){
+    .layout_header {
+        width: 98.9%;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    
+    .button-inline-block {
+        display: grid;
+        margin-bottom: 4px;
+    }
+    
+    .box-alteracoes select {
+        width: 100%;
+    }
+
+    .box-alteracoes text,
+    label {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .box-alteracoes label {
+        margin-top: 10px;
+        margin-bottom: 2px;
+        margin-left: 0;
+    }
+}

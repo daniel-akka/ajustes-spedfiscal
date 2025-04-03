@@ -1,3 +1,4 @@
+
 var conteudo_original_do_arquivo = "";
 var blocos_removidos = [
     "|0150|", "|C100|", "|C190|", "|C191|", "|9900|0150|", 
@@ -19,14 +20,14 @@ function lerArquivoSpedFiscal(files){
         conteudo_original_do_arquivo = this.result;
      };
      reader.readAsText(files[0], "iso-8859-1");
+
 }
 
 function extrairIventarioSpedFiscal(){
-    
     var cont_linhas = 0;
     var cont_bloco = 0;
     var novo_conteudo_do_arquivo = "";
-    var array_linhas = conteudo_original_do_arquivo.split('\n');
+    var array_linhas = conteudo_original_do_arquivo.split('%0D%0A');
     var remover_linha = false;
     var cont9990 = 0;
     array_linhas.forEach(linha => {
@@ -57,7 +58,7 @@ function extrairIventarioSpedFiscal(){
             }
         })
         if(linha.startsWith("|9990|")) {
-            linha = "|9990|" + (cont9990 + 2) + "|\n";
+            linha = "|9990|" + (cont9990 + 2) + "|%0D%0A";
         }
         
 
@@ -65,7 +66,7 @@ function extrairIventarioSpedFiscal(){
         blocos_ajustados.forEach(function(value, bloco){
 
             if (linha.startsWith(bloco)){
-                linha = value + "\n";
+                linha = value + "%0D%0A";
             }
         })
 
@@ -74,16 +75,17 @@ function extrairIventarioSpedFiscal(){
             
             cont_linhas += 1;
             novo_conteudo_do_arquivo += "|9999|" + cont_linhas + "|";
-            novo_conteudo_do_arquivo += "\n"
+            novo_conteudo_do_arquivo += "%0D%0A"
         } else {
             cont_linhas += 1;
             novo_conteudo_do_arquivo += linha;   
         }        
         
     });
-    
+
     downloadInventarioSpedFiscal('INVENTARIO - ' + filename, novo_conteudo_do_arquivo);
 }
+
 
 function finalBloco(linha, quantidade){
     var colunas = linha.split("|");
@@ -92,7 +94,7 @@ function finalBloco(linha, quantidade){
 
                         //ser for a ultima coluna
         if (i == colunas.length - 2){
-            str_linha += quantidade + "|\n"
+            str_linha += quantidade + "|%0D%0A"
             break;
         }else{
             str_linha += colunas[i] + "|";
@@ -104,7 +106,7 @@ function finalBloco(linha, quantidade){
 
 function downloadInventarioSpedFiscal(filename, text) {
     var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;iso-8859-1,' + encodeURIComponent(text));
+    element.setAttribute('href', 'data:text/plain;charset=iso-8859-1,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
   
     element.style.display = 'none';
