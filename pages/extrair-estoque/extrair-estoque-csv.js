@@ -13,11 +13,14 @@ function lerArquivoSpedFiscal(files){
 }
 
 function gerarConteudoCsv(){
-    
+
+    var checkbox_add_coluna_total = document.getElementById("add_coluna_total");
     novo_conteudo_do_arquivo = "";
     var array_linhas = conteudo_original_do_arquivo.split('\n');
     var colunas_produto = [];
     var array_produtos_map = new Map();
+    array_inventario_csv.splice(0);
+    
     array_linhas.forEach(linha => {
     
         //Se é o registro do cadastro dos produtos:
@@ -37,6 +40,7 @@ function gerarConteudoCsv(){
             var unidade = "";
             var quantidade = "";
             var valorunitario = "";
+            var total = 0
             var array_da_linha_csv = [];
 
             var colunas_da_linha = linha.split("|");
@@ -49,10 +53,16 @@ function gerarConteudoCsv(){
            
             //add array dos valores do produto:
             array_da_linha_csv.push(codigo);
-            array_da_linha_csv.push(nome.replaceAll(",", ""));
+
+            array_da_linha_csv.push(nome.replaceAll(/[,#]/gi, ""));
             array_da_linha_csv.push(quantidade);
             array_da_linha_csv.push(unidade);
             array_da_linha_csv.push(valorunitario);
+
+            if (checkbox_add_coluna_total.checked) {
+                total = parseFloat(valorunitario.replaceAll(",", ".")) * parseFloat(quantidade.replaceAll(",", "."));
+                array_da_linha_csv.push(total.toString().replaceAll(".", ",")); //total
+            }
 
             //add linha ao conteudo principal:
             array_inventario_csv.push(array_da_linha_csv);

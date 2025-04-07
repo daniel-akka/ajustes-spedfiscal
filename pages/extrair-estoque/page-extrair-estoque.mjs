@@ -12,6 +12,10 @@ export default () => {
     </p>
     <label for="fileSped">Selecione o arquivo:</label>
     <input type="file" id="fileSped" name="fileSped" accept=".txt" onChange="lerArquivoSpedFiscal(this.files)"><br><br>
+    <div >
+        <input type="checkbox" id="add_coluna_total" name="add_coluna_total" style="float: left"/>         
+        <label for="add_coluna_total" style="margin-left: 5px"><strong>Adicionar Coluna Total no CSV</strong></label>
+    </div><br>
     <div class="button-inline-block">
         <button class="default-button button-inline-block" onclick="extrairIventarioSpedFiscal()">Extrair no Formato SPEDFISCAL</button>
         <button class="default-button-green button-inline-block" onclick="extrairInventarioCsv()">Extrair no Formator CSV  <i class="fa fa-file"></i></button>
