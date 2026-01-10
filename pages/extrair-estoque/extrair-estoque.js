@@ -128,7 +128,7 @@ function downloadInventarioSpedFiscal(filename, text) {
     //contentWithCRLF = contentWithCRLF.replace(/\n/g, '%0D%0A');
     //const blob = new Blob([contentWithCRLF], { type: 'text/plain;charset=iso-8859-1' });
     element.setAttribute('href', 'data:text/plain;charset=iso-8859-1,' + encodeURIComponent(text));
-    element.setAttribute('href', URL.createObjectURL(blob));
+    //element.setAttribute('href', URL.createObjectURL(blob));
     element.setAttribute('download', filename);
   
     element.style.display = 'none';
