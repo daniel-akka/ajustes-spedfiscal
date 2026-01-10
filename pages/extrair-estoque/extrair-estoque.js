@@ -75,7 +75,7 @@ function extrairIventarioSpedFiscal(){
             }
         })
         if(linha.startsWith("|9990|")) {
-            linha = "|9990|" + (cont9990 + 2) + "|"+ '%0D%0A';
+            linha = "|9990|" + (cont9990 + 2) + "|"+ '\n';
         }
         
 
@@ -83,7 +83,7 @@ function extrairIventarioSpedFiscal(){
         blocos_ajustados.forEach(function(value, bloco){
 
             if (linha.startsWith(bloco)){
-                linha = value + '%0D%0A';
+                linha = value + '\n';
             }
         })
 
@@ -93,7 +93,7 @@ function extrairIventarioSpedFiscal(){
             
             cont_linhas += 1;
             novo_conteudo_do_arquivo += "|9999|" + cont_linhas + "|";
-            novo_conteudo_do_arquivo += '%0D%0A'
+            novo_conteudo_do_arquivo += '\n'
         } else {
             cont_linhas += 1;
             novo_conteudo_do_arquivo += linha;   
@@ -112,7 +112,7 @@ function finalBloco(linha, quantidade){
 
                         //ser for a ultima coluna
         if (i == colunas.length - 2){
-            str_linha += quantidade + "|%0D%0A";
+            str_linha += quantidade + "|\n";
             break;
         }else{
             str_linha += colunas[i] + "|";
@@ -124,11 +124,11 @@ function finalBloco(linha, quantidade){
 
 function downloadInventarioSpedFiscal(filename, text) {
     var element = document.createElement('a');
-    //const contentWithCRLF = text;
-    //contentWithCRLF = contentWithCRLF.replace(/\n/g, '%0D%0A');
-    //const blob = new Blob([contentWithCRLF], { type: 'text/plain;charset=iso-8859-1' });
-    element.setAttribute('href', 'data:text/plain;charset=iso-8859-1,' + encodeURIComponent(text));
-    //element.setAttribute('href', URL.createObjectURL(blob));
+    const contentWithCRLF = text;
+    contentWithCRLF = contentWithCRLF.replace(/\n/g, '\r\n');
+    const blob = new Blob([contentWithCRLF], { type: 'text/plain;charset=iso-8859-1' });
+    //element.setAttribute('href', 'data:text/plain;charset=iso-8859-1,' + encodeURIComponent(text));
+    element.setAttribute('href', URL.createObjectURL(blob));
     element.setAttribute('download', filename);
   
     element.style.display = 'none';
