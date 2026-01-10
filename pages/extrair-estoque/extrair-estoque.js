@@ -1,7 +1,7 @@
 
 var conteudo_original_do_arquivo = "";
 var blocos_removidos = [
-    "|0150|", "|C100|", "|C190|", "|C191|", "|9900|0150|", 
+    "|0150|", "|C100|", "|C170|", "|C190|", "|C191|", "|9900|0150|", 
     "|9900|C100|", "|9900|C190|", "|9900|C191|"
 ];
 
@@ -12,6 +12,8 @@ blocos_para_contagem.set("|990", "|9900|9900|");
 var blocos_ajustados = new Map();
 blocos_ajustados.set("|C001|", "|C001|1|");
 blocos_ajustados.set("|C990|", "|C990|2|");
+
+var tipo_quebra_linha = '%0D%0A';
 
 function lerArquivoSpedFiscal(files){
 
@@ -28,9 +30,21 @@ function extrairIventarioSpedFiscal(){
     var cont_bloco = 0;
     var novo_conteudo_do_arquivo = "";
     var array_linhas = conteudo_original_do_arquivo.split('%0D%0A');
+
+    if (array_linhas.length < 5){
+        array_linhas = conteudo_original_do_arquivo.split('\n');
+        if (array_linhas.length < 5){
+            alert('Linhas do arquivo com ' + array_linhas.length + '. Não será extraído o inventário');
+            return;
+        }
+        tipo_quebra_linha = '\n';
+    }
+    
     var remover_linha = false;
     var cont9990 = 0;
+
     array_linhas.forEach(linha => {
+
 
         remover_linha = false;
         //blocos que serao removidos
@@ -40,7 +54,10 @@ function extrairIventarioSpedFiscal(){
             }
         });
         
-        if (remover_linha){ return; }
+        
+        if (remover_linha){ 
+            return; 
+        }
 
 
         if (linha.startsWith("|99")){cont9990 += 1}
@@ -58,7 +75,7 @@ function extrairIventarioSpedFiscal(){
             }
         })
         if(linha.startsWith("|9990|")) {
-            linha = "|9990|" + (cont9990 + 2) + "|%0D%0A";
+            linha = "|9990|" + (cont9990 + 2) + "|"+ tipo_quebra_linha;
         }
         
 
@@ -66,16 +83,17 @@ function extrairIventarioSpedFiscal(){
         blocos_ajustados.forEach(function(value, bloco){
 
             if (linha.startsWith(bloco)){
-                linha = value + "%0D%0A";
+                linha = value + tipo_quebra_linha;
             }
         })
 
+        
         //Final do arquivo
         if (linha.startsWith("|9999|")){
             
             cont_linhas += 1;
             novo_conteudo_do_arquivo += "|9999|" + cont_linhas + "|";
-            novo_conteudo_do_arquivo += "%0D%0A"
+            novo_conteudo_do_arquivo += tipo_quebra_linha
         } else {
             cont_linhas += 1;
             novo_conteudo_do_arquivo += linha;   
@@ -94,7 +112,7 @@ function finalBloco(linha, quantidade){
 
                         //ser for a ultima coluna
         if (i == colunas.length - 2){
-            str_linha += quantidade + "|%0D%0A"
+            str_linha += quantidade + "|" + tipo_quebra_linha;
             break;
         }else{
             str_linha += colunas[i] + "|";
@@ -106,7 +124,9 @@ function finalBloco(linha, quantidade){
 
 function downloadInventarioSpedFiscal(filename, text) {
     var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=iso-8859-1,' + encodeURIComponent(text));
+    const contentWithCRLF = text.replace(/\n/g, '\r\n');
+    const blob = new Blob([contentWithCRLF], { type: 'text/plain;charset=iso-8859-1' });
+    element.setAttribute('href', URL.createObjectURL(blob));
     element.setAttribute('download', filename);
   
     element.style.display = 'none';
