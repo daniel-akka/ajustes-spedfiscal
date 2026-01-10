@@ -125,7 +125,7 @@ function finalBloco(linha, quantidade){
 function downloadInventarioSpedFiscal(filename, text) {
     var element = document.createElement('a');
     const contentWithCRLF = text.replace(/\n/g, '%0D%0A');
-    const blob = new Blob([contentWithCRLF], { type: 'text/plain;charset=iso-8859-1' });
+    const blob = new Blob([contentWithCRLF], { type: 'text/plain;charset=utf-8' });
     //element.setAttribute('href', 'data:text/plain;charset=iso-8859-1,' + encodeURIComponent(text));
     element.setAttribute('href', URL.createObjectURL(blob));
     element.setAttribute('download', filename);
