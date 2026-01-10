@@ -75,7 +75,7 @@ function extrairIventarioSpedFiscal(){
             }
         })
         if(linha.startsWith("|9990|")) {
-            linha = "|9990|" + (cont9990 + 2) + "|"+ tipo_quebra_linha;
+            linha = "|9990|" + (cont9990 + 2) + "|%0D%0A";
         }
         
 
@@ -83,7 +83,7 @@ function extrairIventarioSpedFiscal(){
         blocos_ajustados.forEach(function(value, bloco){
 
             if (linha.startsWith(bloco)){
-                linha = value + tipo_quebra_linha;
+                linha = value + "%0D%0A";
             }
         })
 
@@ -93,7 +93,7 @@ function extrairIventarioSpedFiscal(){
             
             cont_linhas += 1;
             novo_conteudo_do_arquivo += "|9999|" + cont_linhas + "|";
-            novo_conteudo_do_arquivo += tipo_quebra_linha
+            novo_conteudo_do_arquivo += "%0D%0A"
         } else {
             cont_linhas += 1;
             novo_conteudo_do_arquivo += linha;   
@@ -112,7 +112,7 @@ function finalBloco(linha, quantidade){
 
                         //ser for a ultima coluna
         if (i == colunas.length - 2){
-            str_linha += quantidade + "|" + tipo_quebra_linha;
+            str_linha += quantidade + "|%0D%0A";
             break;
         }else{
             str_linha += colunas[i] + "|";
@@ -124,9 +124,10 @@ function finalBloco(linha, quantidade){
 
 function downloadInventarioSpedFiscal(filename, text) {
     var element = document.createElement('a');
-    const contentWithCRLF = text;
+    //const contentWithCRLF = text;
     //contentWithCRLF = contentWithCRLF.replace(/\n/g, '%0D%0A');
-    const blob = new Blob([contentWithCRLF], { type: 'text/plain;charset=iso-8859-1' });
+    //const blob = new Blob([contentWithCRLF], { type: 'text/plain;charset=iso-8859-1' });
+    element.setAttribute('href', 'data:text/plain;charset=iso-8859-1,' + encodeURIComponent(text));
     element.setAttribute('href', URL.createObjectURL(blob));
     element.setAttribute('download', filename);
   
