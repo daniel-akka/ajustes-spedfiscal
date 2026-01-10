@@ -75,7 +75,7 @@ function extrairIventarioSpedFiscal(){
             }
         })
         if(linha.startsWith("|9990|")) {
-            linha = "|9990|" + (cont9990 + 2) + "|%0D%0A";
+            linha = "|9990|" + (cont9990 + 2) + "|"+ '%0D%0A';
         }
         
 
@@ -83,7 +83,7 @@ function extrairIventarioSpedFiscal(){
         blocos_ajustados.forEach(function(value, bloco){
 
             if (linha.startsWith(bloco)){
-                linha = value + "%0D%0A";
+                linha = value + '%0D%0A';
             }
         })
 
@@ -93,7 +93,7 @@ function extrairIventarioSpedFiscal(){
             
             cont_linhas += 1;
             novo_conteudo_do_arquivo += "|9999|" + cont_linhas + "|";
-            novo_conteudo_do_arquivo += "%0D%0A"
+            novo_conteudo_do_arquivo += '%0D%0A'
         } else {
             cont_linhas += 1;
             novo_conteudo_do_arquivo += linha;   
